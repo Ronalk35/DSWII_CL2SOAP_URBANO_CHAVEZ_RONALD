@@ -17,7 +17,7 @@ public class FileStorageService {
         try {
             Files.createDirectories(this.fileStorageLocation);
         } catch (Exception ex) {
-            throw new RuntimeException("Could not create the directory where the uploaded files will be stored.", ex);
+            throw new RuntimeException("No se pudo crear el directorio donde se almacenarán los archivos cargados.", ex);
         }
     }
 
@@ -26,7 +26,7 @@ public class FileStorageService {
             Path targetLocation = this.fileStorageLocation.resolve(file.getOriginalFilename());
             Files.copy(file.getInputStream(), targetLocation);
         } catch (IOException ex) {
-            throw new RuntimeException("Could not store file " + file.getOriginalFilename() + ". Please try again!", ex);
+            throw new RuntimeException("No se pudo almacenar el archivo" + file.getOriginalFilename() + ". Inténtalo de nuevo!", ex);
         }
     }
 }
