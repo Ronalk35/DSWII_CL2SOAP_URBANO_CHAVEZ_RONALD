@@ -1,0 +1,51 @@
+-- ----------------------------------
+-- Base de datos : BDCibertec 
+-- Autor : Ronald Urbano Chávez
+-- Fecha : 23 - Junio - 2024
+-- ----------------------------------
+create database BDCibertec ;
+use BDCibertec ;
+
+CREATE TABLE Personaje
+(
+ IdPersonaje 		INT NOT NULL AUTO_INCREMENT,
+ NomPersonaje		VARCHAR(50) NOT NULL,
+ ApePersonaje 		VARCHAR(50) NOT NULL,
+ FechNacPersonaje	DATE NOT NULL,
+ PRIMARY KEY (IdPersonaje)
+);
+
+CREATE TABLE ProgramaTv
+(
+ IdProgramaTv 		INT NOT NULL AUTO_INCREMENT,
+ Titulo 			VARCHAR(250) NOT NULL,
+ Resumen 			VARCHAR(250) NOT NULL,
+ FechaInicio	DATE NOT NULL,
+ IdPersonaje 			INT NOT NULL,
+ PRIMARY KEY (IdProgramaTv),
+ FOREIGN KEY (IdPersonaje) REFERENCES Personaje(IdPersonaje)
+ );
+ 
+ -- Registros para la tabla 'Personaje'
+INSERT INTO Personaje (NomPersonaje, ApePersonaje, FechNacPersonaje) VALUES
+('Elena', 'Rodriguez', '1980-05-15'),
+('Alejandro', 'Lopez', '1985-07-20'),
+('Laura', 'Fernandez', '1990-09-25'),
+('Pablo', 'Garcia', '1995-11-30'),
+('Maria', 'Martinez', '2000-01-05'),
+('Daniel', 'Perez', '2005-03-10'),
+('Valentina', 'Sanchez', '2010-05-15'),
+('Gabriel', 'Gomez', '2015-07-20');
+
+-- Registros para la tabla 'ProgramaTv'
+INSERT INTO ProgramaTv (Titulo, Resumen, FechaInicio, IdPersonaje) VALUES
+('Noticiero Estelar', 'Resumen del noticiero', '2024-01-01', 1),
+('El Show de Alejandro', 'Entretenimiento con Alejandro', '2024-02-02', 2),
+('Entrevista con Laura', 'Entrevistas con Laura Fernandez', '2024-03-03', 3),
+('Comedia con Pablo', 'Programa de comedia con Pablo Garcia', '2024-04-04', 4),
+('Dramatizados', 'Dramas interpretados por Maria Martinez', '2024-05-05', 5),
+('Programa Infantil', 'Programa para niños con Daniel Perez', '2024-06-06', 6),
+('Cocina con Valentina', 'Programa de cocina con Valentina Sanchez', '2024-07-07', 7),
+('Deportes con Marco_Antonio', 'Resumen deportivo con Gabriel Gomez', '2024-08-08', 8);
+
+select * from Personaje;
